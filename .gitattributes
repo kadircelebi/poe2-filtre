@@ -1,0 +1,9 @@
+* text=auto
+*.png binary
+*.ico binary
+*.icns binary
+*.car binary
+*.jar binary
+*.woff binary
+*.woff2 binary
+*.exe binary
