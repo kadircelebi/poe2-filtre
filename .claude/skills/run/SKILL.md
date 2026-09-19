@@ -66,7 +66,23 @@ wails3 build      # bin/poe2filter.exe
 - **Filtre çıktısını** gerçek NeverSink dosyasıyla doğrulamak için dosyayı
   `raw.githubusercontent.com/NeverSinkDev/NeverSink-Filter-for-PoE2` üzerinden indirip
   `filter.Inject` ile birleştiren geçici bir Go testi yaz; kural sırası kritik.
-- **Bindings:** `wails3` kurulu değil. `AppService`'e yeni metot eklersen
-  `frontend/bindings/poe2filter/appservice.ts` dosyasını elle güncelle; çağrı kimliği
-  `FNV-1a 32("main.AppService.<Metot>")`. Yeni Go alanları için ilgili
-  `internal/*/models.ts` dosyasına da alanı ekle.
+- **Bindings:** `go install github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0-beta.23`
+  ile CLI kurulur, sonra `wails3 generate bindings -ts -i` (repodaki dosyalar bu
+  bayraklarla üretildi; `-i` unutulursa interface'ler class'a dönüşür ve diff patlar).
+  CLI olmadan elle yazmak gerekirse çağrı kimliği `FNV-1a 32("main.AppService.<Metot>")`.
+
+## Windows exe'si (release için)
+
+Konteynerden çapraz derlenebilir; ikon ve manifest için önce `.syso` üretilir:
+
+```bash
+cd build && wails3 generate syso -arch amd64 -icon windows/icon.ico \
+  -manifest windows/wails.exe.manifest -info windows/info.json -out ../wails_windows_amd64.syso
+cd .. && (cd frontend && npx vite build)
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -tags production -trimpath \
+  -ldflags "-w -s -H windowsgui -X main.version=<sürüm>" -o poe2filtre-v<sürüm>-windows-amd64.exe .
+```
+
+Sürüm iki yerde: `main.go` içindeki `version` ve `build/config.yml`. Release notuna
+exe'nin `sha256sum` özetini koy (README böyle söz veriyor). `api.github.com` bu
+ortamda kullanıcının kimliğiyle açık, release ve asset yüklemesi REST ile yapılabilir.
