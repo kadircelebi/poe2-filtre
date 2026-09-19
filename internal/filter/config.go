@@ -35,8 +35,10 @@ type Config struct {
 	ChanceBases     []string          `json:"chance_bases"`
 	HighWaystones   bool              `json:"high_waystones"`
 	HighUncutGems   bool              `json:"high_uncut_gems"`
-	PinnacleKeys    bool              `json:"boss_keys_and_tablets"`
-	LeagueName      string            `json:"league_name"`
+	// Uncut Support Gems drop constantly, so they have their own switch.
+	UncutSupportGems bool   `json:"uncut_support_gems"`
+	PinnacleKeys     bool   `json:"boss_keys_and_tablets"`
+	LeagueName       string `json:"league_name"`
 
 	// Base filter: a NeverSink strictness (0..6), or a custom file when set.
 	Strictness       int    `json:"strictness"`

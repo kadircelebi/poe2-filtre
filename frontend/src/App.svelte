@@ -349,6 +349,7 @@
         <h2>Özel kurallar</h2>
         <Toggle bind:checked={cfg.high_waystones} label="T14+ waystone vurgusu" onchange={() => queueSave()} />
         <Toggle bind:checked={cfg.high_uncut_gems} label="Sadece 20. seviye uncut gem" hint="Diğer uncut gem'ler gizlenir" onchange={() => queueSave()} />
+        <Toggle bind:checked={cfg.uncut_support_gems} label="Uncut support gem'leri göster" hint="Kapalıyken hepsi gizlenir; açıkken 20. seviye kuralına uyar" onchange={() => queueSave()} />
         <Toggle bind:checked={cfg.boss_keys_and_tablets} label="Pinnacle anahtarları vurgusu" onchange={() => queueSave()} />
         <Toggle bind:checked={cfg.hide_exalt} label="Exalted Orb'ları gizle" onchange={() => queueSave()} />
         <Toggle bind:checked={cfg.hide_gold} label="Gold'u gizle" onchange={() => queueSave()} />
