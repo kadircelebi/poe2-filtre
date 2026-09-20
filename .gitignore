@@ -12,3 +12,6 @@ build/android/overlay.json
 build/android/gen/
 # Go test binaries (Smart App Control blocks unsigned binaries in %TEMP%)
 .gotmp/
+
+# Oturum devri notları (kişisel, yayınlanmaz)
+CLAUDE.md
