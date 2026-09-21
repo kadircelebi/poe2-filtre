@@ -12,6 +12,8 @@ build/android/overlay.json
 build/android/gen/
 # Go test binaries (Smart App Control blocks unsigned binaries in %TEMP%)
 .gotmp/
+# "go build ." bunu depo köküne bırakıyor; asıl exe bin/ altında
+/poe2filter.exe
 
 # Oturum devri notları (kişisel, yayınlanmaz)
 CLAUDE.md
