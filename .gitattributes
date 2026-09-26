@@ -10,3 +10,9 @@
 
 # Windows toplu is dosyalari her zaman CRLF olmali
 *.bat text eol=crlf
+
+# Wails writes the bindings and gofmt writes Go files with LF; with autocrlf the
+# working copy would otherwise flip to CRLF and every regeneration would show
+# the files as changed.
+frontend/bindings/** text eol=lf
+*.go text eol=lf
